@@ -37,7 +37,7 @@ The ancilla couples to one site (e.g., spin 1) in the system.
 
 After interaction, reset the ancilla.
 
-$$\mathcal{R}(\rho) = |0\rangle \langle 0| \otimes \Tr_a(\rho)$$
+$$\mathcal{R}(\rho) = |0\rangle \langle 0| \otimes Tr_a(\rho)$$
 
 This acts like a cold bath, enforcing directionality in the flow of energy.
 
