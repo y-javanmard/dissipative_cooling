@@ -43,9 +43,7 @@ The choice of the edge qubit is arbitrary—any controllable qubit of $\mathcal 
 
 A *hardware reset* (or active measurement + preparation) applies an effective **lowering operator**
 
-$$
-\mathcal R(\rho) = |0\rangle_a\!\langle0| \otimes \operatorname{Tr}_a(\rho),
-$$
+$$\mathcal R(\rho) = |0\rangle_a \langle0| \otimes \operatorname{Tr}_a(\rho),$$
 
 which is equivalent, at the master‑equation level, to the dissipator
 
