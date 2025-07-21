@@ -23,7 +23,7 @@ $$
 H = H_{\text{sys}} + H_{a} + H_{\text{int}},
 $$
 
-where:
+Where:
 
 * $H_{\text{sys}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^x$
 * $H_a = \frac{\omega_a}{2} \sigma^z_a$
@@ -35,12 +35,10 @@ The ancilla couples to one site (e.g., spin 1) in the system.
 
 ## 3. Reset
 
-After interaction, reset the ancilla:
+After interaction, reset the ancilla.
 
-$$
-\mathcal{R}(\rho) = |0\rangle\langle 0| \otimes \operatorname{Tr}_a(\rho)
-$$
+$$\mathcal{R}(\rho) = |0\rangle\langle 0| \otimes \operatorname{Tr}_a(\rho)$$
 
-This acts like a cold bath, enforcing directionality in energy flow.
+This acts like a cold bath, enforcing directionality in the flow of energy.
 
-Repeated interaction + reset steps realize dissipative evolution toward the ground state of $H_{\text{sys}}$.
+Repeated interaction and reset steps lead to dissipative evolution toward the ground state of $H_{\text{sys}}$.
