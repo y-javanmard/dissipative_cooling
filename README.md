@@ -23,7 +23,7 @@ Iterating this interaction–reset cycle drives the system toward its lowest-ene
 ### Hamiltonian
 
 $$
-H\_{\mathrm{tot}} \;=\; H\_{\mathrm{sys}} \;\; + \;\; H\_{\mathrm{anc}} \;\; + \;\; H\_{\mathrm{int}},
+H\_{\mathrm{tot}} = H\_{\mathrm{sys}}; +  H\_{\mathrm{anc}}  +  H\_{\mathrm{int}},
 $$
 
 * **System:** choose any problem Hamiltonian (Ising, Heisenberg, molecular, …).
@@ -41,7 +41,7 @@ yielding the familiar Jaynes–Cummings–like ladder that swaps excitations.
 A hardware reset is modelled by the Lindblad “lowering” operator applied **only** to the ancilla
 
 $$
-\mathcal L\_{\mathrm{reset}}[\rho] = \gamma\_\mathrm{r} \Bigl( \sigma^-\_{(a)} \, \rho \, \sigma^+\_{(a)}  -  \tfrac12 \{ \sigma^+\_{(a)}\sigma^-\_{(a)}, \rho \} \Bigr).
+\mathcal L\_{\mathrm{reset}}[\rho] = \gamma\_\mathrm{r} \Bigl( \sigma^-\_{(a)} \, \rho \, \sigma^+\_{(a)}  -  \tfrac12 \{ \sigma^+\_{(a)} \sigma^-\_{(a)}, \rho \} \Bigr).
 $$
 
 Provided $\gamma\_\mathrm{r} \gg g$ every cycle, the ancilla re‑thermalises close to \\|0⟩, carrying entropy away.
