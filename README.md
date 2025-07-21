@@ -31,9 +31,7 @@ where
 * **Ancilla**: $H_a = \frac{\omega_a}{2}\,\sigma_a^z$
 * **Interaction**: a resonant, energy‑preserving exchange (e.g. an XX‑coupling)
 
-  $$
-    H_{\text{int}} = g \left( \sigma_1^x \sigma_a^x + \sigma_1^y \sigma_a^y \right),
-  $$
+  $$H_{\text{int}} = g \left( \sigma_1^x \sigma_a^x + \sigma_1^y \sigma_a^y \right),$$
 
   that swaps excitations between the *edge* system qubit 1 and the ancilla.
 
