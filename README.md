@@ -1,62 +1,46 @@
 # dissipative\_cooling
 
-A minimal, reproducible playground for **dissipative (algorithmic) cooling** of a quantum register using an ancilla qubit that is periodically reset.  The repository shows how to remove entropy from a target system by coupling it to a controllable dissipative element built from hardware‑native $T_1$ relaxation.
+A minimal demo of **dissipative cooling** using a resettable ancilla qubit.
 
 ---
 
-## 1  Concept in a Nutshell
+## 1. Idea
 
-> *Pump heat into a bucket you can empty.*
->
-> 1. **System register** $\mathcal S$: the qubits (spins) whose energy you want to lower.
-> 2. **Ancilla / bath qubit** $a$: a single qubit that we can *reset* to $|0\rangle$ at will.
-> 3. **System–bath coupling** allows energy to flow from $\mathcal S$ into $a$.
-> 4. **Frequent resets** erase the entropy that has accumulated in $a$, therefore enforcing a *directional* flow of heat out of $\mathcal S$.
+Couple a quantum system $S$ to an ancilla qubit $a$. Repeatedly:
 
-Repeated coupling‑and‑reset cycles drive $\mathcal S$ toward its ground state, provided the reset rate is faster than intrinsic heating noise.
+* Swap energy from $S$ into $a$.
+* Reset $a$ to its ground state.
+
+This removes entropy from $S$, driving it toward its ground state.
 
 ---
 
-## 2  Hamiltonian
+## 2. Hamiltonian
 
-We consider a separable Hamiltonian
+We consider:
 
 $$
 H = H_{\text{sys}} + H_{a} + H_{\text{int}},
 $$
 
-where
+where:
 
-* **System**: $H_{\text{sys}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^x$
-* **Ancilla**: $H_a = \frac{\omega_a}{2}\,\sigma_a^z$
-* **Interaction**: a resonant, energy‑preserving exchange (e.g. an XX‑coupling)
+* $H_{\text{sys}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^x$
+* $H_a = \frac{\omega_a}{2} \sigma^z_a$
+* $H_{\text{int}} = g (\sigma^-_1 \sigma^+_a + \text{h.c.})$
 
-  $$H_{\text{int}} = g \left( \sigma_1^x \sigma_a^x + \sigma_1^y \sigma_a^y \right),$$
-
-  that swaps excitations between the *edge* system qubit 1 and the ancilla.
-
-The choice of the edge qubit is arbitrary—any controllable qubit of $\mathcal S$ can be wired to the ancilla.
+The ancilla couples to one site (e.g., spin 1) in the system.
 
 ---
 
-## 3  Reset‑Based Dissipation
+## 3. Reset
 
-A *hardware reset* (or active measurement + preparation) applies an effective **lowering operator**
-
-$$\mathcal R(\rho) = |0\rangle_a \langle0| \otimes \operatorname{Tr}_a(\rho),$$
-
-which is equivalent, at the master‑equation level, to the dissipator
+After interaction, reset the ancilla:
 
 $$
-\mathcal D_a[\rho] = \gamma \,\bigl( \sigma^-_a \,\rho\, \sigma^+_a -\tfrac12\{\sigma^+_a \sigma^-_a,\rho\} \bigr).
+\mathcal{R}(\rho) = |0\rangle\langle 0| \otimes \operatorname{Tr}_a(\rho)
 $$
 
-Integrating the unitary swap $e^{-i H_{\text{int}} \tau}$ with a fast reset gives the stroboscopic map
+This acts like a cold bath, enforcing directionality in energy flow.
 
-$$
-\rho_{n+1} = \mathcal R\bigl[ U_{\text{int}}\,\rho_n\,U_{\text{int}}^\dagger \bigr],
-$$
-
-which, in the limit of small cycle time, converges to a Lindblad evolution where the ancilla acts as a *zero‑temperature bath* for the coupled system qubit. Under ergodic conditions, the entire register cools toward the ground state of $H_{\text{sys}}$.
-
----
+Repeated interaction + reset steps realize dissipative evolution toward the ground state of $H_{\text{sys}}$.
